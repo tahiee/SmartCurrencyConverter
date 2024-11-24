@@ -127,7 +127,6 @@ function App() {
               </option>
             ))}
         </select>
-
         <label htmlFor="amount" className="block text-sm font-medium mb-2">
           Amount
         </label>
