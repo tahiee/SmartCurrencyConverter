@@ -24,6 +24,7 @@ function App() {
       amount: parseFloat(result.amount).toFixed(3), // Show 3 decimal places
     }));
     const backendUrl = import.meta.env.NEXT_PUBLIC_BACKEND_URL;
+    
     useEffect(() => {
     // Fetch the list of currencies when the component mounts
     fetch(`${backendUrl}/api/currencies`, {
@@ -41,7 +42,7 @@ function App() {
       })
 
       .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  }, [backendUrl]);
 
   useEffect(() => {
     // Save the history to localStorage when the history changes
