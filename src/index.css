@@ -75,6 +75,7 @@ body {
   font-weight: 600;
   margin-top: 5px;
   left: 0;
+  float: left;
 }
 
 .content {
@@ -114,7 +115,8 @@ input[type="text"],
 input[type="number"] {
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
@@ -133,6 +135,7 @@ button {
   cursor: pointer;
   float: right;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
@@ -142,7 +145,7 @@ button:hover {
 
 /* Search Bar */
 .search-bar {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .search-bar input {
@@ -157,7 +160,7 @@ button:hover {
 .currency-list {
   list-style: none;
   margin: 0;
-  max-height: 250px; /* Reduced height for mobile */
+  max-height: 290px; /* Reduced height for mobile */
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -194,8 +197,8 @@ button:hover {
 }
 
 .currency-item button {
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   background: none;
   border: none;
   color: #ff5b7f;
@@ -252,11 +255,11 @@ button:hover {
   }
 
   .content div {
-    font-size: 48px;
+    font-size: 58px;
   }
 
   .content div span {
-    font-size: 36px;
+    font-size: 46px;
   }
 
   .search-bar input,

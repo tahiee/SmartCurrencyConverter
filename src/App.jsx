@@ -214,7 +214,7 @@ function App() {
                     onClick={() => {
                       console.log(`Remove ${result.currency}`);
                     }}
-                    className="ml-2 text-red-500"
+                    className="text-red-500"
                   >
                     X
                   </button>
