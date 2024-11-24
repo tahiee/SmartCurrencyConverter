@@ -9,6 +9,12 @@ function App() {
   console.log(conversionResults, "these are conversion result");
   const [selectedCurrecny, setSelectedCurrecny] = useState("");
   const [searchQuery, setSearchQuery] = useState(""); // New state for search query
+
+  const backendUrl =
+    import.meta.env.NEXT_PUBLIC_BACKEND_URL ||
+    "https://smartcurrecnyconverter-backend-production.up.railway.app";
+  console.log(backendUrl, "yea backend url hai");
+
   const [history, setHistory] = useState(() => {
     const saved = localStorage.getItem("currencyHistory");
     return saved ? JSON.parse(saved) : [];
@@ -23,14 +29,19 @@ function App() {
       ...result,
       amount: parseFloat(result.amount).toFixed(3), // Show 3 decimal places
     }));
-    const backendUrl = import.meta.env.NEXT_PUBLIC_BACKEND_URL;
-    
-    useEffect(() => {
+
+  useEffect(() => {
     // Fetch the list of currencies when the component mounts
     fetch(`${backendUrl}/api/currencies`, {
       method: "GET",
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log("rew response ka masla hai", res);
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status yahn hai 37: ${res.status}`);
+        }
+        return res.json();
+      })
       .then(({ data }) => {
         console.log(data);
         const reStructData = [];
@@ -41,7 +52,9 @@ function App() {
         setTargetCurrencies(reStructData); // Assuming the response is an array of currencies
       })
 
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch((error) =>
+        console.error("Error fetching data: yahn masla ha", error)
+      );
   }, [backendUrl]);
 
   useEffect(() => {
@@ -99,8 +112,7 @@ function App() {
           How Much are
           <br />
           <span className="mr-2">
-            {amount} {baseCurrency}
-            {" "}
+            {amount} {baseCurrency}{" "}
           </span>
           in
           <span>{selectedCurrecny ? `: ${selectedCurrecny}` : "Convert"}</span>
