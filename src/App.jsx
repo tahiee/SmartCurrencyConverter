@@ -23,8 +23,8 @@ function App() {
       ...result,
       amount: parseFloat(result.amount).toFixed(3), // Show 3 decimal places
     }));
-    const backendUrl = 'https://smart-currecny-converter-backend.vercel.app/';
-  useEffect(() => {
+    const backendUrl = import.meta.env.NEXT_PUBLIC_BACKEND_URL;
+    useEffect(() => {
     // Fetch the list of currencies when the component mounts
     fetch(`${backendUrl}/api/currencies`, {
       method: "GET",
