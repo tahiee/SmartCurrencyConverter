@@ -163,8 +163,9 @@ function App() {
             />
           </div>
           <ul className="currency-list max-h-60 overflow-y-auto border rounded-md p-2">
-            {searchQuery?.length
-              ? filterData?.map((result, index) => (
+            {searchQuery?.length ? (
+              filterData?.length > 0 ? (
+                filterData.map((result, index) => (
                   <li
                     key={index}
                     className="currency-item flex justify-between items-center p-2"
@@ -177,21 +178,28 @@ function App() {
                     <span className="cursor-pointer">
                       {result.currency}: {Number(result?.amount).toFixed(2)}
                     </span>
+                    {/* <button className="remove-button">x</button> */}
                   </li>
                 ))
-              : convertedData?.map((result, index) => (
-                  <li
-                    key={index}
-                    className="currency-item flex justify-between items-center p-2"
-                  >
-                    <p>{result.symbol_native}</p>
-                    <span
-                      className="cursor-pointer"
-                    >
-                      {result.currency}: {Number(result?.amount).toFixed(2)}
-                    </span>
-                  </li>
-                ))}
+              ) : (
+                <p className="text-center text-gray-500">No data available</p>
+              )
+            ) : convertedData?.length > 0 ? (
+              convertedData.map((result, index) => (
+                <li
+                  key={index}
+                  className="currency-item flex justify-between items-center p-2"
+                >
+                  <span className="cursor-pointer">
+                    {result.currency}: {Number(result?.amount).toFixed(2)}
+                  </span>
+                  
+                  {/* <button className="remove-button">x</button> */}
+                </li>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">No data available</p>
+            )}
           </ul>
         </div>
       </div>
