@@ -23,10 +23,10 @@ function App() {
       ...result,
       amount: parseFloat(result.amount).toFixed(3), // Show 3 decimal places
     }));
-
+    const backendUrl = 'https://smart-currecny-converter-backend.vercel.app/';
   useEffect(() => {
     // Fetch the list of currencies when the component mounts
-    fetch("http://localhost:3002/api/currencies", {
+    fetch(`${backendUrl}/api/currencies`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -56,7 +56,7 @@ function App() {
       amount: amount,
     });
 
-    fetch(`http://localhost:3002/api/convert`, {
+    fetch(`${backendUrl}/api/convert`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
