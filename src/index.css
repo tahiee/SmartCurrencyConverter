@@ -41,9 +41,42 @@ body {
   border-radius: 20px;
   background-color: #ffffff;
   opacity: 1;
+  margin-bottom: 10px;
 }
 
 /* Content Styles (Mobile-first) */
+
+.projectName {
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #e7c6ff, #fdb8d0);
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  top: 200px;
+  left: 200px;
+}
+.title {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.title2 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #333;
+  margin-left: 5px;
+}
+.subtitle {
+  display: block;
+  font-size: 16px;
+  color: #d6458c;
+  font-weight: 600;
+  margin-top: 5px;
+  left: 0;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -199,8 +232,13 @@ button:hover {
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
+    position: relative;
   }
-
+  .projectName{
+    position: absolute;
+    top: 570px;
+    left: 30px;
+  }
   .box {
     max-width: 45%;
     margin-top: 20px;

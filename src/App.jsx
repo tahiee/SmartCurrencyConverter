@@ -6,7 +6,9 @@ function App() {
   const [amount, setAmount] = useState();
   const [targetCurrencies, setTargetCurrencies] = useState([]);
   const [conversionResults, setConversionResults] = useState([]);
-  console.log(conversionResults, "these are conversion result");
+
+  // console.log(conversionResults, "these are conversion result");
+  
   const [selectedCurrecny, setSelectedCurrecny] = useState("");
   const [searchQuery, setSearchQuery] = useState(""); // New state for search query
 
@@ -27,11 +29,11 @@ function App() {
     )
     .map((result) => ({
       ...result,
-      amount: parseFloat(result.amount).toFixed(3), // Show 3 decimal places
+      amount: parseFloat(result.amount).toFixed(3), // 3 show krny hen decimal may
     }));
 
   useEffect(() => {
-    // Fetch the list of currencies when the component mounts
+    // currencies fetch krny hen jb component mount hoga
     fetch(`${backendUrl}/api/currencies`, {
       method: "GET",
     })
@@ -49,7 +51,7 @@ function App() {
           console.log(`${key}: ${value}`);
           reStructData.push(value);
         }
-        setTargetCurrencies(reStructData); // Assuming the response is an array of currencies
+        setTargetCurrencies(reStructData); // yahn Assume krna hai curriency arry may ha
       })
 
       .catch((error) =>
@@ -58,7 +60,7 @@ function App() {
   }, [backendUrl]);
 
   useEffect(() => {
-    // Save the history to localStorage when the history changes
+    // save krna hai history may jb be localstorage change hoga
     localStorage.setItem("currencyHistory", JSON.stringify(history));
   }, [history]);
 
@@ -85,7 +87,7 @@ function App() {
       .then((data) => {
         console.log(data, "yeah ha data");
 
-        setConversionResults(data); // Assuming data is an object with converted values
+        setConversionResults(data); // Assuming kr rha hn data ko convert values may!
         setLoading(false);
 
         // Save this conversion in history
@@ -107,6 +109,14 @@ function App() {
 
   return (
     <div className="container p-4 sm:p-6 md:w-1/2 lg:w-1/3 mx-auto">
+      <div className="projectName">
+        <p className="title">SMART {' '}
+        <p className="title2">CURRENCY</p>
+        </p>
+        
+        <p className="subtitle">CONVERTER</p>
+      </div>
+
       <div className="content">
         <div className="text-center">
           How Much are
@@ -171,7 +181,8 @@ function App() {
               type="text"
               placeholder="Search Currency"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)} // Update search query state
+              onChange={(e) => setSearchQuery(e.target.value)} 
+              // Update search query state
               className="w-full p-2 border rounded-md"
             />
           </div>
